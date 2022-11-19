@@ -11,8 +11,14 @@ export interface Productos {
   brand: String,
   category: String,
   thumbnail: String,
-  images: String[]
+  images: String
 
 }
+
+export interface ProductoconID extends Productos {
+  id: number
+}
+
+export interface Parcial extends Partial<Productos>{}
 
 

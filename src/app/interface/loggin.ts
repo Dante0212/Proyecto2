@@ -5,5 +5,9 @@ export interface Loggin {
   firstName: String,
   lastName: String,
   gender: String,
-  token: String
+  token: String,
+  age: Number,
+  password: String,
+  birthDate: String
+
 }

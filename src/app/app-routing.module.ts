@@ -5,7 +5,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'registro',
+    redirectTo: 'listar-productos',
     pathMatch: 'full'
   },
   {

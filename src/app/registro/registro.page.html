@@ -1,44 +1,188 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registrar usuario</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">First Name</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Last Name</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Age</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Username</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Birth Date</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label position="floating">Gender</ion-label>
-    <ion-input placeholder="Enter text"></ion-input>
-  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registrar Usuario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Formulario es valido = {{ formularioRegistro.valid }}
+      <form [formGroup]="formularioRegistro" novalidate>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" formControlName="firstName"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('firstName').invalid  && campo('firstName').errors && campo('firstName').errors.required && fueTocado('firstName') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('firstName').invalid  && campo('firstName').errors && campo('firstName').errors.maxlength && fueTocado('firstName') "
+          >
+            Los caracteres maximos son 15
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('firstName').invalid  && campo('firstName').errors && campo('firstName').errors.minlength && fueTocado('firstName') "
+          >
+            Los caracter mínimo es 1
+          </ion-note>
+        </ion-item>
 
-  <ion-button>Registrarse</ion-button>
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+
+          <ion-input type="text" formControlName="lastName"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('lastName').invalid  && campo('lastName').errors && campo('lastName').errors.required && fueTocado('lastName') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('lastName').invalid  && campo('lastName').errors && campo('lastName').errors.maxlength && fueTocado('lastName') "
+          >
+            Los caracteres maximos son 20
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('lastName').invalid  && campo('lastName').errors && campo('lastName').errors.minlength && fueTocado('lastName') "
+          >
+            Los caracteres maínimos son 4
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+
+          <ion-input type="number" formControlName="age"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('age').invalid  && campo('age').errors && campo('age').errors.required && fueTocado('age') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('age').invalid  && campo('age').errors && campo('age').errors.max && fueTocado('age') "
+          >
+            Edad máxima 98
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('age').invalid  && campo('age').errors && campo('age').errors.min && fueTocado('age') "
+          >
+            Edad mínima 18
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nombre de Usuario</ion-label>
+
+          <ion-input type="text" formControlName="username"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('username').invalid  && campo('username').errors && campo('username').errors.required && fueTocado('username') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('username').invalid  && campo('username').errors && campo('username').errors.maxlength && fueTocado('username') "
+          >
+            Los caracteres máximos son 10
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('username').invalid  && campo('username').errors && campo('username').errors.minlength && fueTocado('username') "
+          >
+            Los caracteres mínimos son 5
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+
+          <ion-input type="text" formControlName="password"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('password').invalid  && campo('password').errors && campo('password').errors.required && fueTocado('password') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('password').invalid  && campo('password').errors && campo('password').errors.maxlength && fueTocado('password') "
+          >
+            Los caracteres máximos son 16
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('password').invalid  && campo('password').errors && campo('password').errors.minlength && fueTocado('password') "
+          >
+            Los caracteres mínimos son 8
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Fecha de nacimiento</ion-label>
+
+          <ion-input type="number" formControlName="birthDate"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('birthDate').invalid  && campo('birthDate').errors && campo('birthDate').errors.required && fueTocado('birthDate') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('birthDate').invalid  && campo('birthDate').errors && campo('birthDate').errors.max && fueTocado('birthDate') "
+          >
+            Antes de la fecha actual
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('birthDate').invalid  && campo('birthDate').errors && campo('birthDate').errors.min && fueTocado('birthDate') "
+          >
+          Desde 1991 hacia arriba
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Género</ion-label>
+
+          <ion-input type="text" formControlName="gender"></ion-input>
+          <ion-note
+          slot="error"
+            *ngIf="campo('gender').invalid  && campo('gender').errors && campo('gender').errors.required && fueTocado('gender') "
+          >
+            Este campo es requerido
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('gender').invalid  && campo('gender').errors && campo('gender').errors.maxlength && fueTocado('gender') "
+          >
+            Debe ser Male o Female
+          </ion-note>
+          <ion-note
+          slot="error"
+            *ngIf="campo('gender').invalid  && campo('gender').errors && campo('gender').errors.minlength && fueTocado('gender') "
+          >
+            Debe ser Male o Female
+          </ion-note>
+        </ion-item>
+
+
+
+
+
+
+
+      </form>
+    </ion-card-content>
+    <ion-button *ngIf="!Usuario.id" expand="block" (click)="Registrarse()">Registrarse</ion-button>
+  </ion-card>
 </ion-content>
