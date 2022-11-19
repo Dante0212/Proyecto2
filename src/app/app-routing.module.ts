@@ -9,7 +9,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'listar-productos',
+    path: 'inicio-sesion',
     loadChildren: () => import('./listar-productos/listar-productos.module').then( m => m.ListarProductosPageModule)
   },
   {
